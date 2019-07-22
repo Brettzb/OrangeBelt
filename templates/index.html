@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Python Belt</title>
+</head>
+<body>
+  <div class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li class="error">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <h1>Quotes!</h1>
+    
+    <h2>Register</h2>
+    <form action="/users/create" method="post">
+      <p><label for="first_name">First Name:</label>
+      <input type="text" name="first_name" placeholder="First Name"></p>
+
+      <p><label for="last_name">Last Name:</label>
+      <input type="text" name="last_name" placeholder="Last Name"></p>
+
+      <p><label for="username">Username:</label>
+      <input type="text" name="username" placeholder="Noobmaster69"></p>
+
+      <p><label for="email">Email:</label>
+      <input type="text" name="email" placeholder="Johnsmith@aol.com"></p>
+
+      <p><label for="password">Password:</label>
+      <input type="password" name="password" placeholder="Thunder1"></p>
+
+      <p><label for="confirm">Confirm Password:</label>
+      <input type="password" name="confirm" placeholder="Thunder1"></p>
+
+      <input type="submit" value="Register">
+    </form>
+    <h2>Login</h2>
+    <form action="/login" method="post">
+      <p><label for="email">Email:</label>
+      <input type="text" name="email"></p>
+      
+      <p><label for="password">Password:</label>
+      <input type="password" name="password"></p>
+      
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</body>
+</html>

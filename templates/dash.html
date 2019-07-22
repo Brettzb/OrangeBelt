@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Quote Dash!</h1>
+    <h2>Hello {{user['first_name']}}</h2>
+    <a href="/edit" class="button">Edit Account</a>
+
+    <h2>Write a quote</h2>
+    <form action="/post_quote" method="POST">
+        <p>Author: <input type="text" name="quote_author"></p>
+        <p>Quote: <input type="text" name="quote_content"></p>
+        <input type="submit" value="Post quote">
+    </form>
+
+    {% for quote in quotes %}
+    <div>
+        <p>{{quote['quote_content']}} -{{quote['quote_author']}} -<a href="/user/{{quote['first_name']}} {{quote['last_name']}}">Posted By: {{quote['first_name']}} {{quote['last_name']}}</a></p>
+        <p><a href="/details/{{quote['id']}}">{{quote['likes']}}</a></p>
+        {% if quote.id in liked_quotes %}
+            <p><a href="/unlike/{{quote['id']}}"><button>Unlike!</button></a></p>
+        {% else: %}
+            <p><a href="/like/{{quote['id']}}"><button>Like!</button></a></p>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <a href="/logout" class="button">Logout</a>
+</body>
+</html>

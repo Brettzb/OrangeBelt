@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>Content: {{quote['quote_content']}}</p>
+    <p>Author: {{quote['first_name']}} {{quote['last_name']}}</p>
+    <p>Created At: {{quote['created_at']}}</p>
+    <p>Users that Like: {{quote['quote_content']}}
+        <ul>
+        {% for users in users_who_liked %}
+           <li>{{users['first_name']}} {{users['last_name']}}</li> 
+        {% endfor %}
+        </ul>
+    </p>
+</body>
+</html>
